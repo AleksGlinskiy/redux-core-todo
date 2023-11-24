@@ -1,9 +1,10 @@
 import { createStore } from 'redux';
-import todoReducers from "./store/reducers/todoReducers";
+import todoReducer from "./store/reducers/todoReducer";
 import { addTodo, removeTodo } from "./store/actions/todoActions";
-import todoList from "./store/components/todoList";
+import todoList from "./components/todoList";
+import './index.scss';
 
-const store = createStore(todoReducers);
+const store = createStore(todoReducer);
 
 const todo_form = document.getElementById('js_todo_form');
 const todo_form_input = todo_form.querySelector('[name="todo_text"]');

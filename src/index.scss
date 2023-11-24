@@ -1,0 +1,29 @@
+:root {
+    --bg-color: #f9f9f9;
+    --bg-box-color: #fff;
+    --font-color: #0d1329;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+}
+
+.app-todo {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: var(--bg-box-color);
+    padding: 3vw;
+}

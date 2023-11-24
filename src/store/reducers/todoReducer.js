@@ -1,10 +1,10 @@
-import { ADD_TODO, REMOVE_TODO } from "../actions/todoActions";
+import {ADD_TODO, REMOVE_TODO} from "../actions/todoActions";
 
 const initialState = {
-  todos: []
+    todos: []
 };
 
-const todoReducers = (state = initialState, action) => {
+const todoReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TODO: {
             return Object.assign({}, state, {
@@ -32,4 +32,4 @@ const todoReducers = (state = initialState, action) => {
     }
 }
 
-export default todoReducers;
+export default todoReducer;
