@@ -1,4 +1,4 @@
-import { ADD_TODO } from "../actions/todoActions";
+import { ADD_TODO, REMOVE_TODO } from "../actions/todoActions";
 
 const initialState = {
   todos: []
@@ -11,12 +11,22 @@ const todoReducers = (state = initialState, action) => {
                 todos: [
                     ...state.todos,
                     {
+                        id: Date.now(),
                         text: action.payload,
                         completed: false,
                     },
                 ],
             });
         }
+
+        case REMOVE_TODO: {
+            return Object.assign({}, state, {
+                todos: state.todos.filter((todo) => {
+                    return todo.id !== Number(action.payload);
+                })
+            });
+        }
+
         default:
             return state;
     }
