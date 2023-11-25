@@ -2,6 +2,15 @@
     --bg-color: #f9f9f9;
     --bg-box-color: #fff;
     --font-color: #0d1329;
+    --border-color: #edf0f6;
+    --primary-color: #2954ed;
+    --primary-color-hover: #0038ff;
+    --hover-color: #f5f8ff;
+
+    --bg-disabled-color: #eef0f3;
+    --text-disabled-color: #aeb3c5;
+
+    --font-family: 'Nunito Sans', sans-serif;
 }
 
 * {
@@ -10,14 +19,117 @@
     box-sizing: border-box;
 }
 
-html {
-    height: 100%;
+input, button {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-family: var(--font-family);
 }
 
 body {
-    height: 100%;
     background-color: var(--bg-color);
     color: var(--font-color);
+    font-family: var(--font-family);
+    font-size: 15px;
+}
+
+.wrapper {
+    height: 100%;
+    padding: 3vw 0;
+}
+
+.page-title {
+    display: block;
+    text-align: center;
+    margin-bottom: 1vw;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.input {
+    display: block;
+    min-height: 42px;
+    line-height: 42px;
+    padding: 0 20px;
+    background-color: var(--bg-box-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 0 0 0;
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    &:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px var(--primary-color);
+    }
+
+    &:hover {
+        border-color: var(--primary-color);
+    }
+}
+
+.btn {
+    display: inline-block;
+    min-height: 42px;
+    line-height: 42px;
+    padding: 0 30px;
+    background-color: var(--primary-color);
+    color: var(--bg-box-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+
+    &:focus-visible {
+        outline: none;
+        border-color: var(--primary-color-hover);
+        box-shadow: 0 0 0 2px var(--primary-color-hover);
+    }
+
+    &:hover {
+        background-color: var(--primary-color-hover);
+        border-color: var(--primary-color-hover);
+    }
+
+    &:disabled {
+        cursor: default;
+        background-color: var(--bg-disabled-color);
+        border-color: var(--bg-disabled-color);
+        color: var(--text-disabled-color);
+    }
+}
+
+.btn-ico {
+    display: inline-block;
+    width: 42px;
+    min-width: 42px;
+    min-height: 42px;
+    line-height: 42px;
+    background-color: var(--hover-color);
+    color: var(--primary-color);
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+
+    &:focus-visible {
+        outline: none;
+        border-color: var(--primary-color-hover);
+        box-shadow: 0 0 0 2px var(--primary-color-hover);
+    }
+
+    &:hover {
+        background-color: var(--primary-color-hover);
+        border-color: var(--primary-color-hover);
+    }
+
+    &:disabled {
+        cursor: default;
+        background-color: var(--bg-disabled-color);
+        border-color: var(--bg-disabled-color);
+        color: var(--text-disabled-color);
+    }
 }
 
 .app-todo {
@@ -25,5 +137,60 @@ body {
     max-width: 700px;
     margin: 0 auto;
     background-color: var(--bg-box-color);
-    padding: 3vw;
+    border-radius: clamp(10px, 1.5vw, 30px);
+    overflow: hidden;
+
+    @media (max-width: 720px) {
+        max-width: 90%;
+    }
+
+    &__header {
+        padding: clamp(15px, 2.5vw, 50px) clamp(15px, 1.5vw, 30px);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    &__form {
+        display: flex;
+        align-items: center;
+
+        .input {
+            flex-basis: 80%;
+        }
+
+        .btn {
+            flex-basis: 20%;
+            margin-left: 15px;
+        }
+    }
+
+    &__list {
+        .empty-list {
+            display: block;
+            padding: 20px clamp(15px, 1.5vw, 30px);
+            text-align: center;
+        }
+    }
+}
+
+.todo-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px clamp(15px, 1.5vw, 30px);
+
+    &:hover {
+        background-color: var(--hover-color);
+
+        .todo-block {
+            &__btn {
+                background-color: var(--primary-color);
+                color: var(--bg-box-color);
+            }
+        }
+
+    }
+
+    &__btn {
+        margin-left: 20px;
+    }
 }

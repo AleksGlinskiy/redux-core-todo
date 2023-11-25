@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo Redux</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="app-todo">
-        <header>
-            <form action="" id="js_todo_form">
-                <input type="text" name="todo_text" placeholder="Write new todo">
-                <button>Send</button>
-            </form>
-        </header>
-        <main id="js_todo_list" data-empty-message="Список пуст!">Список пуст!</main>
+    <div class="wrapper">
+        <h1 class="page-title">Todo list</h1>
+        <div class="app-todo">
+            <header class="app-todo__header">
+                <form action="/" class="app-todo__form" id="js_todo_form">
+                    <input type="text" name="todo_text" minlength="2" maxlength="500" class="input" placeholder="Enter the text">
+                    <button class="btn">Add</button>
+                </form>
+            </header>
+            <main class="app-todo__list" id="js_todo_list" data-empty-message="The list is empty!">
+                <div class="empty-list">The list is empty!</div>
+            </main>
+        </div>
     </div>
 </body>
 </html>
