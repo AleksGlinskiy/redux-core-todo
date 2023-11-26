@@ -1,22 +1,36 @@
 import { createStore } from 'redux';
-import todoReducer from "./store/reducers/todoReducer";
+import rootReducer from "./store/reducers/rootReducer";
 import { addTodo, removeTodo } from "./store/actions/todoActions";
 import todoList from "./components/todoList";
 import './index.scss';
+import {activeFormBtn} from "./store/actions/formActions";
+import {setDisabled} from "./helpers";
 
-const store = createStore(todoReducer);
+const store = createStore(rootReducer);
 
 const todo_form = document.getElementById('js_todo_form');
+const form_button = todo_form.querySelector('button');
 const todo_form_input = todo_form.querySelector('[name="todo_text"]');
 const todo_list_container = document.getElementById('js_todo_list');
 
 store.subscribe(() => {
     const state = store.getState();
 
-    //console.log(state);
+    console.log(state);
 
-    todo_form_input.value = '';
+    setDisabled(state.active_form_btn, form_button);
     todoList(todo_list_container, state.todos);
+});
+
+todo_form_input.addEventListener('input', function (event) {
+    let text = this.value;
+    if(text !== '') {
+        store.dispatch(activeFormBtn(true));
+    } else {
+        store.dispatch(activeFormBtn(false));
+    }
+
+    this.value = text;
 });
 
 todo_form.addEventListener('submit', (event) => {
@@ -24,6 +38,8 @@ todo_form.addEventListener('submit', (event) => {
 
     if(todo_form_input.value !== '') {
         store.dispatch(addTodo(todo_form_input.value));
+        store.dispatch(activeFormBtn(false));
+        todo_form_input.value = '';
     }
 });
 

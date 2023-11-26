@@ -1,8 +1,6 @@
 const todoList = (todo_list_container, todos) => {
     todo_list_container.innerText = '';
 
-    console.log(todos);
-
     if (!todos.length) {
         const empty_message = todo_list_container.getAttribute('data-empty-message');
         todo_list_container.innerHTML = `<div class="empty-list">${empty_message ? empty_message : ''}</div>`;
