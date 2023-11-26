@@ -16,7 +16,7 @@ const todo_list_container = document.getElementById('js_todo_list');
 store.subscribe(() => {
     const state = store.getState();
 
-    console.log(state);
+    //console.log(state);
 
     setDisabled(state.active_form_btn, form_button);
     todoList(todo_list_container, state.todos);
@@ -46,8 +46,6 @@ todo_form.addEventListener('submit', (event) => {
 document.addEventListener('click', (event) => {
     const event_remove_todo = event.target.closest('.todo-block__btn');
     const event_toggle_todo = event.target.closest('.todo-block__btn-toggle');
-
-    console.log(event.target);
 
     if(event_remove_todo) {
         const todo_item = event_remove_todo.closest('.todo-block');
