@@ -7,6 +7,9 @@
     --primary-color-hover: #0038ff;
     --hover-color: #f5f8ff;
 
+    --done-color: #9de798;
+    --error-color: #fa8e79;
+
     --bg-disabled-color: #eef0f3;
     --text-disabled-color: #aeb3c5;
 
@@ -111,7 +114,7 @@ body {
     border: 0;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s, color 0.3s;
 
     &:focus-visible {
         outline: none;
@@ -186,11 +189,44 @@ body {
                 background-color: var(--primary-color);
                 color: var(--bg-box-color);
             }
+
+            &__btn-toggle {
+                opacity: 1;
+            }
         }
 
     }
 
-    &__btn {
+    &__time {
+        display: block;
+        font-size: 12px;
+    }
+
+    &__btns {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
         margin-left: 20px;
+    }
+
+    &__btn {
+        margin-left: 15px;
+    }
+
+    &__btn-toggle {
+        opacity: 0;
+        background-color: var(--done-color);
+        color: var(--bg-box-color);
+
+        &.done {
+            background-color: var(--error-color);
+        }
+    }
+
+    &--completed {
+        span {
+            color: var(--text-disabled-color);
+            text-decoration: line-through;
+        }
     }
 }

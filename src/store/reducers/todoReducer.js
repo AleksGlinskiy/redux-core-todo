@@ -1,4 +1,4 @@
-import {ADD_TODO, REMOVE_TODO} from "../actions/todoActions";
+import {ADD_TODO, TOGGLE_TODO, REMOVE_TODO} from "../actions/todoActions";
 
 const todoReducer = (state = [], action) => {
     switch (action.type) {
@@ -11,6 +11,17 @@ const todoReducer = (state = [], action) => {
                     completed: false,
                 },
             ];
+        }
+
+        case TOGGLE_TODO: {
+            return state.map((todo) => {
+                if (todo.id === Number(action.payload)) {
+                    return Object.assign({}, todo, {
+                        completed: !todo.completed,
+                    });
+                }
+                return todo;
+            });
         }
 
         case REMOVE_TODO: {

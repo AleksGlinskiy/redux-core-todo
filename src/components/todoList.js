@@ -8,21 +8,18 @@ const todoList = (todo_list_container, todos) => {
     }
 
     return todos.map((todo) => {
-        const todo_item = document.createElement("div");
-        const todo_item_btn = document.createElement("button");
-        todo_item_btn.classList.add('todo-block__btn', 'btn-ico');
+        let todo_item = `<div class="${todo.completed ? 'todo-block todo-block--completed' : 'todo-block'}" data-id="${todo.id}">
+            <div class="todo-block__text">
+                <span>${todo.text}</span>
+                <span class="todo-block__time">${new Date(todo.id).toLocaleTimeString()}</span>
+            </div>
+            <div class="todo-block__btns">
+                <button class="todo-block__btn-toggle btn-ico${todo.completed ? ' done' : ''}">${todo.completed ? '&#10008;' : '&#10004;'}</button>
+                <button class="todo-block__btn btn-ico">&#10006;</button>
+            </div>
+        </div>`;
 
-        todo_item.classList.add('todo-block');
-        if (todo.completed) {
-            todo_item.classList.add('todo-block--completed');
-        }
-
-        todo_item.setAttribute('data-id', todo.id);
-        todo_item.textContent = todo.text;
-        todo_item_btn.innerHTML = '&#10006;';
-
-        todo_item.appendChild(todo_item_btn);
-        todo_list_container.appendChild(todo_item);
+        todo_list_container.innerHTML += todo_item;
     });
 }
 

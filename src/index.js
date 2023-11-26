@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 import rootReducer from "./store/reducers/rootReducer";
-import { addTodo, removeTodo } from "./store/actions/todoActions";
+import {addTodo, removeTodo, toggleTodo} from "./store/actions/todoActions";
 import todoList from "./components/todoList";
 import './index.scss';
 import {activeFormBtn} from "./store/actions/formActions";
@@ -45,6 +45,9 @@ todo_form.addEventListener('submit', (event) => {
 
 document.addEventListener('click', (event) => {
     const event_remove_todo = event.target.closest('.todo-block__btn');
+    const event_toggle_todo = event.target.closest('.todo-block__btn-toggle');
+
+    console.log(event.target);
 
     if(event_remove_todo) {
         const todo_item = event_remove_todo.closest('.todo-block');
@@ -52,6 +55,15 @@ document.addEventListener('click', (event) => {
 
         if (todo_item_id) {
             store.dispatch(removeTodo(todo_item_id));
+        }
+    }
+
+    if(event_toggle_todo) {
+        const _todo_item = event_toggle_todo.closest('.todo-block');
+        const _todo_item_id = _todo_item.getAttribute('data-id');
+
+        if (_todo_item_id) {
+            store.dispatch(toggleTodo(_todo_item_id));
         }
     }
 });
