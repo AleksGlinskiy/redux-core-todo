@@ -2,9 +2,10 @@ import { createStore } from 'redux';
 import rootReducer from "./store/reducers/rootReducer";
 import {addTodo, removeTodo, toggleTodo} from "./store/actions/todoActions";
 import todoList from "./components/todoList";
-import './index.scss';
 import {activeFormBtn} from "./store/actions/formActions";
 import {setDisabled} from "./helpers";
+
+import './index.scss';
 
 const store = createStore(rootReducer);
 
