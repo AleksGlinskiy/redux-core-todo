@@ -1,6 +1,6 @@
 # Redux Core todo list - Vanilla JS
 
-!["Todo list"](image.png)
+!["Todo list"](preview.png)
 
 ## Actions:
 - **activeFormBtn** - action to change the form button;
