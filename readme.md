@@ -2,6 +2,8 @@
 
 !["Todo list"](preview.png)
 
+## Live: https://redux-core-todo.vercel.app/
+
 ## Actions:
 - **activeFormBtn** - action to change the form button;
 - **addTodo** - action to add an item to the list;
