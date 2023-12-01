@@ -17,8 +17,6 @@ const todo_list_container = document.getElementById('js_todo_list');
 store.subscribe(() => {
     const state = store.getState();
 
-    //console.log(state);
-
     setDisabled(state.active_form_btn, form_button);
     todoList(todo_list_container, state.todos);
 });
